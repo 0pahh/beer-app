@@ -1,20 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from "react";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+import Home from "./components/Home";
+import GetRandomIPA from "./components/GetRandomIPA";
+import { useFonts } from "expo-font";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App = () => {
+  const [fontsLoaded] = useFonts({
+    LEMONMILK: require("./assets/fonts/lemon_milk/LEMONMILK-Regular.otf"),
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
+  return <Home />;
+};
+
+export default App;
